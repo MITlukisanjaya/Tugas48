@@ -15,12 +15,15 @@
             </div>
             <div class="body">
 
-      <form class="" action="createAction" method="POST">
+      <form class="" action="{{base_url()}}/{{ action }}" method="POST">
+      {% if mahasiswa.id %}
+      <input type="hidden" name="id" value="{{ mahasiswa.id }}">
+      {% endif %}
       <div class="form-group">
           <div class="form-line {{ errors.nim ? 'has-error focused error' : '' }}">
             <label for="">Nim</label>
             <input type="text" class="form-control" id="" placeholder="" name="nim"
-            value="{{old.nim}}">
+            value="{{old.nim ? old.nim : mahasiswa.nim|e }}">
             {% if errors.nim%}
             <span>{{ errors.nim | first }}</span>
             {% endif %}
@@ -30,7 +33,7 @@
           <div class="form-line {{ errors.nama ? 'has-error focused error' : '' }}">
             <label for="">Nama</label>
             <input type="text" class="form-control" id="" placeholder="" name="nama"
-            value="{{ old.nama }}">
+            value="{{old.nama ? old.nama : mahasiswa.nama|e }}">
             {% if errors.nama %}
             <span>{{ errors.nama | first}}</span>
             {% endif %}
@@ -40,17 +43,17 @@
           <div class="form-line {{ errors.tempat_lahir ? 'has-error focused error' : '' }}">
             <label for="">Tempat Lahir</label>
             <input type="text" class="form-control" id="" placeholder="" name="tempat_lahir"
-            value="{{ old.tempat_lahir }}">
+            value="{{ old.tempat_lahir ? old.tempat_lahir : mahasiswa.tempat_lahir|e }}">
             {% if errors.tempat_lahir %}
             <span>{{ errors.tempat_lahir | first }}</span>
             {% endif %}
           </div>
       </div>
       <div class="form-group form-float">
-          <div class="form-line {{ errors.tanggal_lahir ? 'has-error focused error' : '' }}">
+          <div class="form-line {{ errors.nama ? 'has-error focused error' : '' }}">
             <label for="">Tanggal Lahir</label>
             <input type="text" class="form-control" id="" placeholder="" name="tanggal_lahir"
-            value="{{ old.tanggal_lahir }}">
+            value="{{old.tanggal_lahir ? old.tanggal_lahir : mahasiswa.tanggal_lahir|e }}">
             {% if errors.tanggal_lahir %}
             <span>{{ errors.tanggal_lahir | first }}</span>
             {% endif %}
@@ -60,7 +63,7 @@
           <div class="form-line {{ errors.alamat ? 'has-error focused error' : '' }}">
             <label for="">Alamat</label>
             <input type="text" class="form-control" id="" placeholder="" name="alamat"
-            value="{{ old.alamat }}">
+            value="{{old.alamat ? old.alamat : mahasiswa.alamat|e }}">
             {% if errors.alamat %}
             <span>{{ errors.alamat | first }}</span>
             {% endif %}

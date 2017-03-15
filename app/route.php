@@ -4,6 +4,7 @@ $app->get('/create','App\Controllers\MahasiswaController:create')
     ->setName('create');
 $app->post('/createAction','App\Controllers\MahasiswaController:createAction');
 
-$app->get('/edit/{id}','App\Controllers\MahasiswaController:edit')
-    ->setName('create');
-$app->post('/editAction','App\Controllers\MahasiswaController:editAction');
+// $app->get('/edit/{id}','App\Controllers\MahasiswaController:edit')
+//     ->setName('edit');
+//
+// $app->post('/editAction','App\Controllers\MahasiswaController:editAction');

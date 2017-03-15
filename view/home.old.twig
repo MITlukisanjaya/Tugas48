@@ -24,7 +24,7 @@
                         <th>Create_at</th>
                         <th>Updated_at</th>
                         <th>Deleted</th>
-                        <!-- <th>Aksi</th> -->
+                        <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,12 +37,9 @@
                         <td>{{ mahasiswa.created_at|e }}</td>
                         <td>{{ mahasiswa.updated_at|e }}</td>
                         <td>{{ mahasiswa.deleted|e }}</td>
-                        <!-- <td>
-                          <a class="btn bg-light-blue" href="edit/{{ mahasiswa.id|e }}">Edit</a>
-                          <a class="btn bg-red">Hapus</a>
-                        </td> -->
+                        <td><a class="btn bg-light-blue" href="edit/{{ mahasiswa.id|e }}">Edit</a> <a class="btn bg-red">Hapus</a></td>
                     <tr>
-                    {% endfor %}
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>

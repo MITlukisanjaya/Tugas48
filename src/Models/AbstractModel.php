@@ -53,7 +53,7 @@ abstract class AbstractModel
             ->where('id ='. $id);
         $query = $this->db->execute();
 
-        return $query->fetchAll();
+        return $query->fetch();
     }
 
     public function findSelect(array $data, $id)
@@ -67,4 +67,19 @@ abstract class AbstractModel
         return $query->fetch();
     }
 
+    public function update(array $data, $id)
+    {
+      $valuesColumn = [];
+      $valuesData   = [];
+
+      $this->db->update($this->table);
+
+      foreach ($data as $key => $value) {
+          $valuesColumn[$key] = ':'.$key;
+          $valuesData[$key]   = $value;
+          $this->db->set($valuesColumn[$key],$valuesData[$key]);
+      }
+          $this->db->setParameter(0, $$valuesData)
+                ->where('id', $id);
+    }
 }
