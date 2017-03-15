@@ -1,0 +1,64 @@
+{% include 'templates/header.twig' %}
+{% block content %}
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+          <a class="bg-brown btn" href="{{ base_url() }}">Kembali</a>
+        </div>
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    {{title}}
+                </h2>
+            </div>
+            <div class="body">
+
+      <form class="" action="{{base_url()}}/{{ action }}" method="POST">
+      {% for mahasiswa in mahasiswa %}
+      <div class="form-group">
+          <div class="form-line {{ errors.nim ? 'has-error focused error' : '' }}">
+            <label for="">Nim</label>
+            <input type="text" class="form-control" id="" placeholder="" name="nim"
+            value="{{old.nim ? '' : mahasiswa.nim|e }}">
+            {% if errors.nim%}
+            <span>{{ errors.nim | first}}</span>
+            {% endif %}
+          </div>
+      </div>
+      <div class="form-group form-float">
+          <div class="form-line {{ errors.nama ? 'has-error focused error' : '' }}">
+            <label for="">Nama</label>
+            <input type="text" class="form-control" id="" placeholder="" name="nama"
+            value="{{old.nama ? '' : mahasiswa.nama|e }}">
+            {% if errors.nama %}
+            <span>{{ errors.nama | first}}</span>
+            {% endif %}
+          </div>
+      </div>
+      <input type="hidden" name="id" value="mahasiswa.id">
+
+      <div class="form-group form-float">
+          <div class="form-line {{ errors.alamat ? 'has-error focused error' : '' }}">
+            <label for="">Alamat</label>
+            <input type="text" class="form-control" id="" placeholder="" name="alamat"
+            value="{{old.alamat ? '' : mahasiswa.alamat|e }}">
+            {% if errors.alamat %}
+            <span>{{ errors.alamat | first}}</span>
+            {% endif %}
+          </div>
+      </div>
+      <tr>
+      <button type="submit" name="button" class="bg-blue btn m-t-15 waves-effect">Simpan</button>
+
+      </form>
+          {% endfor %}
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+{% endblock %}
+{% include 'templates/footer.twig' %}
